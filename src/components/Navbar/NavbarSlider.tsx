@@ -14,26 +14,28 @@ import subscription from "@/assests/subscribe.png"
 import logo from "@/assests/logo.png"
 import complain from '@/assests/complaint.png'
 import approve from '@/assests/approved.png'
+import { MdDashboard } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa";
+import { MdHomeRepairService } from "react-icons/md";
+import { TbTransactionDollar } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "@/Redux/ReduxFunction";
 import Cookies from "js-cookie";
 import { AppDispatch, RootState } from "@/Redux/store";
+import { IconType } from "react-icons";
 // import { RootState } from "@reduxjs/toolkit/query";
 interface SidebarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
 }
 
-const navigation = [
-  { label: "Dashboard", route: "/", iconPath: dashboard },
-  { label: "Users", route: "/users", iconPath: users },
-  { label: "Event Creator", route: "/event-creator", iconPath: creators },
-  { label: "Running Event", route: "/running-event", iconPath: event },
-  { label: "Approve Event", route: "/approve-event", iconPath: approve },
-  { label: "Complains", route: "/complains", iconPath: complain },
-  { label: "Transaction", route: "/transaction", iconPath: payment },
-  { label: "Subscription", route: "/subscription", iconPath: subscription },
+const navigation: { label: string, route: string, iconPath: IconType }[] = [
+  { label: "Dashboard", route: "/", iconPath: MdDashboard },
+  { label: "Users", route: "/users", iconPath: FaUsers },
+  // { label: "Business Owners", route: "/business-owners", iconPath: FaUsers },
+  { label: "All Services", route: "/all-service", iconPath: MdHomeRepairService },
+  { label: "Transaction", route: "/transaction", iconPath: TbTransactionDollar },
 ];
 
 const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
@@ -42,7 +44,7 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
 
   const { name } = useSelector((state: RootState) => state.Auth);
 
-  const renderNavItem = (item: { label: string, route: string, iconPath: StaticImageData }) => {
+  const renderNavItem = (item: { label: string, route: string, iconPath: IconType }) => {
     const isActive = path === item.route;
 
 
@@ -55,7 +57,7 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
             : "text-black border-l-4 border-transparent hover:border-primary hover:bg-gradient-to-r hover:from-[#83008A]/80 hover:to-[#B80069]/60 hover:text-black"
             }`}
         >
-          <Image src={item.iconPath} alt={item.label} width={20} height={20} className="ml-2" />
+          <item.iconPath className="ml-2" size={20} />
           {isOpen && <span className="ml-3 text-[18px] tracking-wide truncate">{item.label}</span>}
         </Link>
       </li>

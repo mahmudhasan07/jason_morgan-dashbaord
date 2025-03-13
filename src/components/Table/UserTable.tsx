@@ -10,16 +10,18 @@ import Loader from '../Loader/Loader';
 import { useUserStatusUpdateMutation } from '@/Redux/Api/userApi';
 import { UserInterFace } from '@/Interfaces/InterFaces';
 import ShowToastify from '@/utils/ShowToastify';
+import { useRouter } from 'next/navigation';
 
 const UserTable = ({ userData, isLoading, serial }: { userData: UserInterFace[], isLoading: boolean, serial: number }) => {
+    const route = useRouter()
 
     const [updateStatus] = useUserStatusUpdateMutation()
 
     const handleStatus = async (id: string) => {
-    
-        const {error} = await updateStatus({ id })
+
+        const { error } = await updateStatus({ id })
         if (error) {
-      
+
             return ShowToastify({ error: "Unsuccessful to block or active the user" })
         }
     }
@@ -52,7 +54,10 @@ const UserTable = ({ userData, isLoading, serial }: { userData: UserInterFace[],
                                 <td className="px-4 text-nowrap py-2">{item.name}</td>
                                 <td className="px-4 text-nowrap py-2">{item.email}</td>
                                 <td className="px-4 text-nowrap py-2">{item.role}</td>
-                                <td className="px-4 text-nowrap py-2"><button onClick={() => handleStatus(item?.id)} className='px-4 py-1 hover:scale-105 transition-transform font-semibold rounded-lg bg-[#83008A] text-white'>{item.user_status == "BLOCKED" ? "Active" : "Block"}</button></td>
+                                <td className="px-4 text-nowrap py-2 space-x-2">
+                                    <button onClick={() => handleStatus(item?.id)} className='px-4 py-1 hover:scale-105 transition-transform font-semibold rounded-lg bg-[#83008A] text-white'>{item.user_status == "BLOCKED" ? "Active" : "Block"}</button>
+                                    <button onClick={() => route.push(`/users/${item?.id}`)} className='px-4 py-1 hover:scale-105 transition-transform font-semibold rounded-lg bg-[#83008A] text-white'>View</button>
+                                </td>
 
                                 {/* <td className="px-4 py-2">{item.createdAt.split("T")[0]}</td> */}
                             </motion.tr>

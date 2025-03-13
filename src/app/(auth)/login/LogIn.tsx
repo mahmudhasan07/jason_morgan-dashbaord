@@ -40,7 +40,7 @@ const LogIn = () => {
             setLogIn("Log in")
         }
         if (data) {
-            if (data?.data?.role != "ADMIN") {
+            if (data?.data?.role != "SUPERADMIN") {
                 ShowToastify({ error: "You are not authorize" })
                 setLogIn("Log in")
                 dispatch(logOut())
@@ -52,6 +52,7 @@ const LogIn = () => {
             route.push("/")
         }
     }
+
 
     const handleShowPassword = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()

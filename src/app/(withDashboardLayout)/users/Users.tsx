@@ -7,10 +7,16 @@ import { useAllUsersQuery } from '@/Redux/Api/userApi';
 const Users = () => {
     const emailRef = useRef<HTMLInputElement | null>(null)
     const [page, setPage] = useState<number>(1);
-    const limit = 100;
+    const limit = 20;
     const [email, setEmail] = useState<string>("");
-    const { data: userData, isLoading } = useAllUsersQuery({ page, limit, email })
-    const button = userData && [...Array(userData?.data?.meta?.totalPage).keys()];
+    const { userData, isLoading, pages } = useAllUsersQuery({ page, limit, email }, {
+        selectFromResult : ({ data, isLoading }) => ({
+            userData: data?.data,
+            isLoading,
+            pages : data?.meta?.totalPage
+        })
+    })
+    const button = userData && [...Array(pages).keys()];
 
     const handleSearch = () => {
         if (emailRef?.current?.value) {
@@ -27,7 +33,7 @@ const Users = () => {
                 <button onClick={handleSearch} className='bg-primary text-white py-1 px-5 text-lg font-semibold rounded-lg ml-2'>Search</button>
             </div>
             <div>
-                <UserTable userData={userData?.data?.data} serial={(page * limit) - limit} isLoading={isLoading}></UserTable>
+                <UserTable userData={userData} serial={(page * limit) - limit} isLoading={isLoading}></UserTable>
             </div>
             <div className="flex justify-center gap-5 mt-5">
                 {
