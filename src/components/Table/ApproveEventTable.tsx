@@ -65,8 +65,8 @@ const ApproveEventTable = ({ approveEvent, isLoading, serial }: { approveEvent: 
                                     <td className="px-4 text-nowrap py-2">{item.totalTicket}</td>
                                     <td className="px-4 text-nowrap py-2">{item.startDate.split("T")[0]}</td>
                                     <td className="px-2  flex gap-2 items-center mt-3 h-fit  justify-center">
-                                        <button onClick={() => handleCancel(item?.id)} className='px-4 py-1 rounded-lg bg-[#83008A] text-white'>Reject</button>
-                                        <button onClick={() => handleApprove(item?.id)} className='px-4 py-1 rounded-lg bg-[#83008A] text-white'>Approve</button>
+                                        <button onClick={() => handleCancel(item?.id)} className='px-4 py-1 rounded-lg bg-[primary] text-white'>Reject</button>
+                                        <button onClick={() => handleApprove(item?.id)} className='px-4 py-1 rounded-lg bg-[primary] text-white'>Approve</button>
                                     </td>
 
                                     {/* <td className="px-4 py-2">{item.createdAt.split("T")[0]}</td> */}

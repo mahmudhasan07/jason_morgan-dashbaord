@@ -43,7 +43,7 @@ const ConcertTable = ({ concertTable, serial, isLoading }: { concertTable : Conc
                                 <td className="px-4 text-nowrap py-2">{item.price}</td>
                                 <td className="px-4 text-nowrap py-2">{item.totalTicket}</td>
                                 <td className="px-4 text-nowrap py-2">{item.startDate.split("T")[0]}</td>
-                                {/* <td className="px-4 py-2"><button className='px-4 py-1 rounded-lg bg-[#83008A] text-white'>Delete</button></td> */}
+                                {/* <td className="px-4 py-2"><button className='px-4 py-1 rounded-lg bg-[primary] text-white'>Delete</button></td> */}
 
                                 {/* <td className="px-4 py-2">{item.createdAt.split("T")[0]}</td> */}
                             </motion.tr>

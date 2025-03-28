@@ -16,7 +16,7 @@ const config: Config = {
         padding: '2rem', // Optional: Add padding
       },
       colors: {
-        primary: "#83008A",
+        primary: "#DC143C",
         secondary: "#B80069",
       },
     },
