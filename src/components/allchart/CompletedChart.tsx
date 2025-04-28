@@ -22,7 +22,7 @@ const CompletedChart = ({ totalEvent, completedEvent }: { totalEvent: number, co
       },
     },
     labels: ['Complete Event'],
-    colors: ['#a503ad'],
+    colors: ['#DC143C'],
   };
 
   return (

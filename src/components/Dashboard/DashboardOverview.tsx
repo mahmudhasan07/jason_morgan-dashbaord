@@ -6,15 +6,27 @@ import LineChart from "@/components/allchart/LineChart";
 // import { useGetAllEventsQuery } from "../Redux/Api/eventApi";
 import CountUp from "react-countup";
 import CompletedChart from "@/components/allchart/CompletedChart";
-import { useGetAllEventsQuery } from "@/Redux/Api/eventApi";
+import { useDashboardInfoQuery } from "@/Redux/Api/userApi";
+// import { useGetAllEventsQuery } from "@/Redux/Api/eventApi";
 
 export default function DashboardOverview() {
   const [selectedValue, setSelectedValue] = useState<string>('this-month');
-  const { data } = useGetAllEventsQuery({})
+  const { userLength, ownerLength, totalIncome } = useDashboardInfoQuery("", {
+    selectFromResult: ({ data }) => ({
+      userLength: data?.data?.userLength,
+      ownerLength:data?.data?.ownerLength,
+      totalIncome:data?.data?.totalIncome,
+    })
+  })
   const today = new Date().toISOString()
-  const runningEvent = data?.data?.data?.filter((item: { startDate: Date | string }) => item?.startDate >= today);
-  const completedEvent = data?.data?.data?.filter((item: { startDate: Date | string }) => item?.startDate <= today);
+  // const runningEvent = data?.data?.data?.filter((item: { startDate: Date | string }) => item?.startDate >= today);
+  // const completedEvent = data?.data?.data?.filter((item: { startDate: Date | string }) => item?.startDate <= today);
 
+
+  console.log("totalIncome", totalIncome);
+  console.log("userLength", userLength);
+  console.log("ownerLength", ownerLength);
+  
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(event.target.value);
@@ -28,12 +40,12 @@ export default function DashboardOverview() {
           <div className="w-full bg-white rounded-lg shadow-md">
             <div className="relative p-6 border-2 rounded-xl">
               <div className="space-y-4 font-poppins">
-                <h3 className="text-xl font-medium text-gray-900">Total Event Created</h3>
+                <h3 className="text-xl font-medium text-gray-900">Total Users</h3>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-[32px] font-bold tracking-tight"> <CountUp end={data?.data?.data?.length} /></span>
-                  <span className="text-lg text-gray-500">Events</span>
+                  <span className="text-[32px] font-bold tracking-tight"> <CountUp end={userLength} /></span>
+                  <span className="text-lg text-gray-500">People</span>
                 </div>
-                <p className="text-base text-gray-600">Total 10 services are featured</p>
+                <p className="text-base text-gray-600"></p>
               </div>
             </div>
           </div>
@@ -42,12 +54,12 @@ export default function DashboardOverview() {
           <div className="w-full bg-white rounded-lg shadow-md">
             <div className="relative p-6 border-2 rounded-xl">
               <div className="space-y-4 font-poppins">
-                <h3 className="text-xl font-medium text-gray-900">Total Completed Event</h3>
+                <h3 className="text-xl font-medium text-gray-900">Total Business Owners</h3>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-[32px] font-bold tracking-tight"><CountUp end={completedEvent?.length} /></span>
-                  <span className="text-lg text-gray-500">Events</span>
+                  <span className="text-[32px] font-bold tracking-tight"><CountUp end={ownerLength} /></span>
+                  <span className="text-lg text-gray-500">People</span>
                 </div>
-                <p className="text-base text-gray-600">Across all categories</p>
+                <p className="text-base text-gray-600"></p>
               </div>
             </div>
           </div>
@@ -56,12 +68,12 @@ export default function DashboardOverview() {
           <div className="w-full bg-white rounded-lg shadow-md">
             <div className="relative p-6 border-2 rounded-xl">
               <div className="space-y-4 font-poppins">
-                <h3 className="text-xl font-medium text-gray-900">Total Pending Event</h3>
+                <h3 className="text-xl font-medium text-gray-900">Total Income</h3>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-[32px] font-bold tracking-tight"><CountUp end={runningEvent?.length} duration={3}></CountUp></span>
-                  <span className="text-lg text-gray-500">Events</span>
+                  <span className="text-[32px] font-bold tracking-tight"><CountUp end={totalIncome} duration={3}></CountUp></span>
+                  <span className="text-lg text-gray-500">From All Services</span>
                 </div>
-                <p className="text-base text-gray-600">Events waiting for approval</p>
+                <p></p>
               </div>
             </div>
           </div>
@@ -69,7 +81,7 @@ export default function DashboardOverview() {
 
         {/* Chart Section */}
         <div className="mt-8">
-          <CompletedChart totalEvent={data?.data?.data?.length } completedEvent={completedEvent?.length} />
+          {/* <CompletedChart totalEvent={data?.data?.data?.length } completedEvent={completedEvent?.length} /> */}
         </div>
         <div className="mt-8">
           <LineChart />

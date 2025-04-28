@@ -43,9 +43,16 @@ const userApi = baseApi.injectEndpoints({
                 }
             },
             invalidatesTags: ["allCreators", "allUsers"]
-        })
+        }),
+        dashboardInfo: build.query({
+            query: () => ({
+                url: `/admin/dashboard/all`,
+                method: "GET"
+            })  ,
+            providesTags: ["dashboardInfo"]
+        }),
     }),
 })
 
 
-export const { useLoginUserMutation, useAllCreatorsQuery, useAllUsersQuery, useUserStatusUpdateMutation, useSingleUserQuery } = userApi
+export const { useLoginUserMutation, useAllCreatorsQuery, useAllUsersQuery, useUserStatusUpdateMutation, useSingleUserQuery, useDashboardInfoQuery } = userApi

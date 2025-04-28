@@ -33,7 +33,7 @@ interface SidebarProps {
 const navigation: { label: string, route: string, iconPath: IconType }[] = [
   { label: "Dashboard", route: "/", iconPath: MdDashboard },
   { label: "Users", route: "/users", iconPath: FaUsers },
-  // { label: "Business Owners", route: "/business-owners", iconPath: FaUsers },
+  { label: "Business Owners", route: "/business-owners", iconPath: FaUsers },
   // { label: "All Services", route: "/all-service", iconPath: MdHomeRepairService },
   { label: "Transaction", route: "/transaction", iconPath: TbTransactionDollar },
 ];
@@ -53,8 +53,8 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
         <Link
           href={item.route}
           className={`relative flex items-center h-11 pr-6 py-[10px] pl-[24px] text-lg transition-all my-3 duration-300 ${isActive
-            ? "poppins-semibold text-white border-l-4 border-primary  bg-gradient-to-r from-primary/80 to-primary/60"
-            : "text-black border-l-4 border-transparent hover:border-primary hover:bg-gradient-to-r hover:from-primary/60 hover:to-primary/50 hover:text-black"
+            ? "poppins-semibold text-white border-l-4 border-primary  bg-gradient-to-r from-primary/90 to-primary/75"
+            : "text-black border-l-4 border-transparent hover:border-primary hover:bg-gradient-to-r hover:from-primary/80 hover:to-primary/65 hover:text-black"
             }`}
         >
           <item.iconPath className="ml-2" size={20} />
@@ -85,14 +85,13 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
       </button>
 
       {/* Sidebar Content */}
-      <div
-        className={`h-screen bg-white duration-300 flex flex-col  font-inter ${isOpen ? 'w-[320px]' : 'w-[80px]'
+      <div className={`h-screen bg-white duration-300 flex flex-col  font-inter ${isOpen ? 'w-[270px]' : 'w-[80px]'
           }`}
       >
         {/* Logo */}
         {isOpen && (
-          <Link href="/" className="flex justify-center mb-6 pt-[20px] pb-[15px]">
-            <Image width={120} height={120} className="max-w-32" src={logo} alt="logo_image" />
+          <Link href="/" className="flex justify-center mb-6">
+            <Image width={120} height={120} className="w-40 mt-14" src={logo} alt="logo_image" />
           </Link>
         )}
 

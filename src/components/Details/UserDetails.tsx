@@ -58,29 +58,24 @@ const UserDetails: React.FC = () => {
             </div>
 
             {/* Business Profile */}
-            {user.BusinessProfile?.length > 0 ? (
+            {user.BusinessProfile ? (
                 <div className="mt-6 bg-white shadow-lg rounded-lg p-6">
                     <h3 className="text-lg font-semibold mb-4">Business Profile</h3>
-                    {
-                        loading ?
-                            <Loader className="w-20 mx-auto"></Loader>
-                            :
-                            user.BusinessProfile.map((business: UserDetail) => (
-                                <div key={business.id} className="border-b pb-3 mb-3">
-                                    <h4 className="text-md font-medium">{business.businessName || "No Name"}</h4>
-                                    <p className="text-gray-500">{business.businessAddress || "No Address"}</p>
-                                    <p className="text-sm text-gray-600">
-                                        Open: {business.startDay} - {business.endDay} ({business.startTime} - {business.endTime})
-                                    </p>
-                                </div>
-                            ))}
+                    <div key={user.BusinessProfile.id} className="border-b pb-3 mb-3">
+                        <Image src={user.BusinessProfile?.image} alt="profile images" height={150} width={150} className="rounded-full"></Image>
+                        <h4 className="text-md font-medium">{user.BusinessProfile?.businessName || "No Name"}</h4>
+                        <p className="text-gray-500">{user.BusinessProfile?.businessAddress || "No Address"}</p>
+                        <p className="text-sm text-gray-600">
+                            Open: {user.BusinessProfile?.startDay} - {user.BusinessProfile?.endDay} ({user.BusinessProfile?.startTime} - {user.BusinessProfile?.endTime})
+                        </p>
+                    </div>
                 </div>
             ) : (
                 <p className="mt-6 text-gray-400">No Business Profile Found</p>
             )}
 
             {/* Services */}
-            {user.Service?.length > 0 ? (
+            {user?.BusinessProfile?.Service?.length > 0 ? (
                 <div className="mt-6 bg-white shadow-lg rounded-lg p-6">
                     <h3 className="text-lg font-semibold mb-4">Services</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -88,7 +83,7 @@ const UserDetails: React.FC = () => {
                             loading ?
                                 <Loader className="w-20 mx-auto"></Loader>
                                 :
-                                user.Service.map((service: any) => {
+                                user?.BusinessProfile?.Service.map((service: any) => {
                                     const averageRating =
                                         service.Review?.length > 0
                                             ? (
