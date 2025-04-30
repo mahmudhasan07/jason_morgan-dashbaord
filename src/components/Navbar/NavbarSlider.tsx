@@ -109,7 +109,7 @@ const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
             </div>
             <button
               onClick={handleLogOut}
-              className={`relative flex items-center h-11 pr-6 py-[10px] pl-[24px] text-lg transition-all duration-300 poppins-semibold hover:bg-gradient-to-r hover:from-[primary]/80 hover:to-[#B80069]/60 to-white text-black border-l-4 ${isOpen ? '' : 'justify-center'
+              className={`relative flex items-center h-11 pr-6 py-[10px] pl-[24px] text-lg transition-all duration-300 poppins-semibold hover:bg-gradient-to-r hover:from-primary hover:to-primary/70 to-white text-black border-l-4 ${isOpen ? '' : 'justify-center'
                 }`}
             >
               <Image src={logout} alt="logout" width={20} height={20} className="ml-2" />
