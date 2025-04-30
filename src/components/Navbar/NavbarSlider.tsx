@@ -36,6 +36,7 @@ const navigation: { label: string, route: string, iconPath: IconType }[] = [
   { label: "Business Owners", route: "/business-owners", iconPath: FaUsers },
   // { label: "All Services", route: "/all-service", iconPath: MdHomeRepairService },
   { label: "Transaction", route: "/transaction", iconPath: TbTransactionDollar },
+  { label: "Request User List", route: "/connect-people", iconPath: FaUsers },
 ];
 
 const NavbarSlider = ({ isOpen, toggleSidebar }: SidebarProps) => {
