@@ -7,7 +7,7 @@ const BusinessOwner = () => {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const [activeTab, setActiveTab] = useState<string>("OWNER");
   const [page, setPage] = useState<number>(1);
-  const limit = 10;
+  const limit = 15;
   const [email, setEmail] = useState<string>("");
   const { userData, isLoading, pages } = useAllUsersQuery(
     { page, limit, email, activeTab },
@@ -30,11 +30,11 @@ const BusinessOwner = () => {
     setEmail("");
   };
   return (
-    <section className="p-10">
-      <h1 className="text-3xl font-semibold text-center mb-8">
+    <section className="p-5">
+      <h1 className="text-3xl font-semibold text-center mb-3">
         Business Owner Details
       </h1>
-      <div className="flex justify-end mb-5">
+      <div className="flex justify-end mb-3">
         <input
           ref={emailRef}
           type="text"
@@ -61,7 +61,7 @@ const BusinessOwner = () => {
           isLoading={isLoading}
         ></UserTable>
       </div>
-      <div className="flex justify-center gap-5 mt-5">
+      <div className="flex justify-center gap-5 mt-3">
         {button &&
           button.map((item: string, index: number) => (
             <button

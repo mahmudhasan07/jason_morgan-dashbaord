@@ -10,7 +10,7 @@ import TableLoader from '../Loader/TableLoader';
 
 const TransactionTable = () => {
     const [page, setPage] = useState<number>(1);
-    const limit = 20;
+    const limit = 15;
     const { data: paymentTable, isLoading } = useGetAllTransactionQuery({ page, limit })
 
     const [currentPage, setCurrentPage] = useState<number>(1);

@@ -24,7 +24,7 @@ const Users = () => {
     const emailRef = useRef<HTMLInputElement | null>(null)
     const [activeTab, setActiveTab] = useState<string>("CUSTOMER");
     const [page, setPage] = useState<number>(1);
-    const limit = 20;
+    const limit = 15;
     const [email, setEmail] = useState<string>("");
     const { userData, isLoading, pages } = useAllUsersQuery({ page, limit, email, activeTab }, {
         selectFromResult: ({ data, isLoading }) => ({
