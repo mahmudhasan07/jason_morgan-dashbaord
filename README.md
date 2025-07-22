@@ -2,6 +2,10 @@
 
 ![Dashboard Preview](https://res.cloudinary.com/daudgshta/image/upload/v1753166966/5c6ed238-b3b3-48e0-92b4-94a8a5e45ad1.png)
 
+![Dashboard Preview](https://res.cloudinary.com/daudgshta/image/upload/v1753175789/Screenshot_2025-07-22_125322_ksawgt.png)
+
+![Dashboard Preview](https://res.cloudinary.com/daudgshta/image/upload/v1753175789/Screenshot_2025-07-22_125334_sqroei.png)
+
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
