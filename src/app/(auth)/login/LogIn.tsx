@@ -35,8 +35,12 @@ const LogIn = () => {
 
         const { data, error } = await loginFun(loginData)
 
-        if (error) {
-            ShowToastify({ error: "Check your password or email address" })
+        console.log(error);
+        
+
+        if (error && 'data' in error) {
+            const errorData = error.data as { message: string };
+            ShowToastify({ error: errorData?.message })
             setLogIn("Log in")
         }
         if (data) {
