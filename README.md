@@ -20,7 +20,8 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ## Log In credentials
 
-email: admin123@gmail.com
+email: admin123@gmail.com 
+
 password: 123456
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
